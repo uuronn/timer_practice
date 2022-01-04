@@ -1,7 +1,6 @@
 <template>
   <main class="main">
-    <h1>Hello, Nuxt template!!!</h1>
-    <p>by {{ companyName }}</p>
+    <TimerTimer />
   </main>
 </template>
 
