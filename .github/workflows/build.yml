@@ -1,0 +1,32 @@
+name: Build
+
+on:
+  push:
+    branches:
+      - main
+      - master
+      - develop
+
+jobs:
+  build:
+    runs-on: ${{ matrix.os }}
+
+    strategy:
+      matrix:
+        os: [ubuntu-latest]
+        node: [12]
+
+    steps:
+      - name: Checkout 🛎
+        uses: actions/checkout@master
+      - name: Setup node.js 🏗
+        uses: actions/setup-node@v2.2.0
+        with:
+          node-version: ${{ matrix.node }}
+      - name: Get yarn cache directory path 🛠
+        id: yarn-cache-dir-path
+        run: echo "::set-output name=dir::$(yarn cache dir)"
+      - name: Install dependencies 👨🏻‍💻
+        run: yarn
+      - name: Build 👷‍♂️
+        run: yarn build
