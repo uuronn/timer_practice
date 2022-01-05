@@ -6,23 +6,20 @@
 
 <script>
 export default {
-  data() {
-    return {
-      countDown: 10
-    };
+  created() {
+    window.setInterval(autoIncrementTimer, 1000);
   },
-  method: {
-    countDownTimer() {
-      if (this.countDown > 0) {
-        setTimeout(() => {
-          this.countDown -= 1;
-          this.countDownTimer();
-        }, 1000);
+  methods: {
+    autoIncrementTimer() {
+      if (this.timerCount <= 0) {
       }
+      timerCount -= 1;
     }
   },
-  created() {
-    this.countDownTimer();
+  data() {
+    return {
+      timerCount: 100
+    };
   }
 };
 </script>
